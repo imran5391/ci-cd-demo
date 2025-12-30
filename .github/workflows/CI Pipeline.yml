@@ -1,0 +1,20 @@
+name: CI Pipeline
+
+on: [push]
+
+jobs: 
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Check HTML File
+        run: |
+          echo "Checking for index.html..."
+          if (Test-Path index.html) {
+            echo "✅ index.html found successfully!"
+          } else {
+            echo "❌ Error: index.html not found!"
+            exit 1
+          }
