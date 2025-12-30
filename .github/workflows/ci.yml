@@ -2,20 +2,20 @@ name: First CI Pipeline
 
 on:
   push:
-    branch:["main"]
+    branches: ["main"]
 jobs:
   build:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
 
     steps:
     - name: checkout code
-    uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: Validate HTML file
-    run: |
-      echo "checking if index.html exists"
-      if [! -f index.html ]; then
-      echo "index.html missing "
-      exit 1
-    fi
-    echo "index.html found"
+      run: |
+        echo "checking if index.html exists"
+        if [ ! -f index.html ]; then
+          echo "index.html missing"
+          exit 1
+        fi
+        echo "index.html found"
